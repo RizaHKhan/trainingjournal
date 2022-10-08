@@ -14,6 +14,9 @@ import TextInput from "@/Components/TextInput.vue";
 import Table from "@/Components/Table.vue";
 import Modal from "@/Components/Modal.vue";
 import Row from "@/Components/Row.vue";
+import Select from "@/Components/Select.vue";
+import Icon from "@/Components/Icon.vue";
+import DatePicker from "@/Components/DatePicker.vue";
 
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
@@ -40,6 +43,9 @@ createInertiaApp({
             .component("Table", Table)
             .component("Modal", Modal)
             .component("Row", Row)
+            .component("Select", Select)
+            .component("Icon", Icon)
+            .component("DatePicker", DatePicker)
             .mount(el);
     },
 });
