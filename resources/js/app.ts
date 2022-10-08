@@ -9,6 +9,8 @@ import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { Quasar } from "quasar";
 
 import Button from "@/Components/Button.vue";
+import Checkbox from "@/Components/Checkbox.vue";
+import TextInput from "@/Components/TextInput.vue";
 
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
@@ -30,6 +32,8 @@ createInertiaApp({
             })
             .use(ZiggyVue, Ziggy)
             .component("Button", Button)
+            .component("Checkbox", Checkbox)
+            .component("TextInput", TextInput)
             .mount(el);
     },
 });

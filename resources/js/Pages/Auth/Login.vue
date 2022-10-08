@@ -6,42 +6,34 @@
             {{ status }}
         </div>
 
-        <q-form @submit.prevent="submit">
-            <div>
-                <InputLabel for="email" value="Email" />
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+        <q-form @submit.prevent="submit" class="flex column q-gutter-sm">
+            <TextInput
+                type="email"
+                class="mt-1 block w-full"
+                v-model="form.email"
+                required
+                autofocus
+                autocomplete="username"
+                label="Email"
+            />
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+            <TextInput
+                type="password"
+                v-model="form.password"
+                required
+                autocomplete="current-password"
+                label="Password"
+            />
 
             <div class="block mt-4">
-                <label class="flex items-center">
-                    <Checkbox name="remember" v-model="form.remember" />
-                    <span class="ml-2 text-sm text-gray-600">Remember me</span>
-                </label>
+                <Checkbox
+                    name="remember"
+                    v-model="form.remember"
+                    label="Remember me"
+                />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
+            <div class="flex justify-center">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
@@ -49,26 +41,21 @@
                 >
                     Forgot your password?
                 </Link>
-
+            </div>
+            <div class="flex">
                 <Button
-                    class="ml-4"
-                    :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                     type="submit"
-                >
-                    Log in
-                </Button>
+                    label="Log in"
+                    class="full-width"
+                />
             </div>
         </q-form>
     </GuestLayout>
 </template>
 
 <script setup lang="ts">
-import Checkbox from "@/Components/Checkbox.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import InputError from "@/Components/InputError.vue";
-import InputLabel from "@/Components/InputLabel.vue";
-import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 
 defineProps({

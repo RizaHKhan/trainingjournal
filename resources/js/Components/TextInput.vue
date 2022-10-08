@@ -1,5 +1,5 @@
 <template>
-    <q-input ref="input" outlined :class="[...classes]" dense no-error-icon>
+    <q-input ref="input" outlined :class="[...classes]" dense>
         <template v-for="(_, slot) in $slots" #[slot]="scope">
             <slot :name="slot" v-bind="scope || {}" />
         </template>
