@@ -31,9 +31,9 @@
                             :href="
                                 route('workout', {
                                     program: workout.program.id,
+                                    date: workout.date,
                                 })
                             "
-                            method="post"
                             >Workout</Link
                         >
                     </template>
@@ -80,6 +80,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { date } from "quasar";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
@@ -89,7 +90,7 @@ interface Program {
 }
 
 const workout = ref<{ date: string; program: Program }>({
-    date: "",
+    date: date.formatDate(new Date(), "YYYY/MM/DD"),
     program: { id: 0, name: "" },
 });
 

@@ -16,44 +16,44 @@ class WorkoutSeeder extends Seeder
     {
         $arr = array('workouts' => [
             [
-                'date'       => '2021/08/01',
+                'date'       => '2022/10/08',
                 'program_id' => 1,
                 'user_id'    => 1,
                 'exercises'  => [
                     [
-                        'excerise_id' => 1,
+                        'exercise_id' => 1,
                         'weight'      => 100,
                         'rpe'         => 4
                     ],
                     [
-                        'excerise_id' => 3,
+                        'exercise_id' => 3,
                         'weight'      => 200,
                         'rpe'         => 4
                     ],
                     [
-                        'excerise_id' => 4,
+                        'exercise_id' => 4,
                         'weight'      => 300,
                         'rpe'         => 4
                     ]
                 ]
             ],
             [
-                'date'       => '2021/08/02',
+                'date'       => '2022/10/09',
                 'program_id' => 2,
                 'user_id'    => 1,
                 'exercises'  => [
                     [
-                        'excerise_id' => 2,
+                        'exercise_id' => 2,
                         'weight'      => 100,
                         'rpe'         => 4
                     ],
                     [
-                        'excerise_id' => 3,
+                        'exercise_id' => 3,
                         'weight'      => 200,
                         'rpe'         => 4
                     ],
                     [
-                        'excerise_id' => 4,
+                        'exercise_id' => 4,
                         'weight'      => 300,
                         'rpe'         => 4
                     ]

@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Requests\StoreWorkoutRequest;
 use App\Http\Requests\UpdateWorkoutRequest;
+use App\Models\Exercise;
 use App\Models\Program;
 use App\Models\Workout;
 
@@ -51,9 +52,49 @@ class WorkoutController extends Controller
      */
     public function show(Request $request, Program $program)
     {
-        return Inertia::render('Workout', [
-            'exercises' => $program->exercises
-        ]);
+        if (!$request->date) {
+            return Inertia::render('Dashboard');
+        }
+
+        $user = $request->user();
+
+        $existingWorkout = Workout::where(
+            [
+                'program_id' => $program->id,
+                'user_id'    => $user->id,
+                'date'       => $request->date
+            ]
+        )->first();
+
+        if (!$existingWorkout) {
+            $exercises = $program->exercises->map(function ($exercise) {
+                return [
+                    'name'   => $exercise->name,
+                    'weight' => 0,
+                    'rpe'    => 0
+                ];
+            });
+
+            return Inertia::render('Workout', [
+                'exercises' => $exercises,
+                'date'      => $request->date
+            ]);
+        } else {
+            $decoded = json_decode($existingWorkout['exercises'], true);
+
+            $exercises = array_map(function ($exercise) {
+                return [
+                    'name'   => Exercise::find($exercise['exercise_id'])->only('name')['name'],
+                    'weight' => $exercise['weight'],
+                    'rpe'    => $exercise['rpe']
+                ];
+            }, $decoded);
+
+            return Inertia::render('Workout', [
+                'exercises' => $exercises,
+                'date'      => $request->date
+            ]);
+        }
     }
 
     /**

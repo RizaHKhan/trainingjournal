@@ -10,6 +10,12 @@ class Exercise extends Model
 {
     use HasFactory;
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'pivot'
+    ];
+
     public function programs(): BelongsToMany
     {
         return $this->belongsToMany(Program::class);

@@ -5,7 +5,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        workout goes here
+                        <p class="text-h3">{{ date }}</p>
+                        <Table :rows="exercises" cols="workoutHeader" />
+                        {{ exercises }}
                     </div>
                 </div>
             </div>
@@ -16,4 +18,15 @@
 <script setup lang="ts">
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/inertia-vue3";
+
+const props = defineProps({
+    exercises: {
+        type: Array,
+        default: () => [],
+    },
+    date: {
+        type: String,
+        default: "",
+    },
+});
 </script>

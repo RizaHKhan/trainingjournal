@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises');
 
-    Route::post('/workout/{program}', [WorkoutController::class, 'show'])->name('workout');
+    Route::get('/workout/{program}', [WorkoutController::class, 'show'])->name('workout');
 });
 
 
