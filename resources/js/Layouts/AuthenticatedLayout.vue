@@ -15,6 +15,12 @@
                         </q-item-section>
                     </q-item>
 
+                    <q-item clickable v-close-popup :href="route('exercises')">
+                        <q-item-section>
+                            <q-item-label>Exercises</q-item-label>
+                        </q-item-section>
+                    </q-item>
+
                     <q-item clickable v-close-popup>
                         <q-item-section>
                             <Link

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\ExerciseController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
+
+    Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises');
 });
 
 
