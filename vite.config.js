@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 
@@ -15,6 +16,9 @@ export default defineConfig({
                     includeAbsolute: false,
                 },
             },
+        }),
+        quasar({
+            sassVariables: "resources/css/quasar-variables.scss",
         }),
     ],
 });

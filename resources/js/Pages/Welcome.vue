@@ -1,41 +1,24 @@
 <template>
     <Head title="Welcome" />
-
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
-    >
-        <div v-if="canLogin" class="fixed top-0 right-0 px-6 py-4 sm:block">
-            <Link
-                v-if="$page.props.auth.user"
-                :href="route('dashboard')"
-                class="text-sm text-gray-700 dark:text-gray-400"
+    <div class="q-pa-sm">
+        <div v-if="canLogin" class="flex justify-end">
+            <Link v-if="$page.props.auth.user" :href="route('dashboard')"
                 >Dashboard</Link
             >
 
             <template v-else>
-                <Link
-                    :href="route('login')"
-                    class="text-sm text-gray-700 dark:text-gray-400"
-                    >Log in</Link
-                >
+                <Link :href="route('login')" class="q-mr-sm">Log in</Link>
 
-                <Link
-                    v-if="canRegister"
-                    :href="route('register')"
-                    class="ml-4 text-sm text-gray-700 dark:text-gray-400"
+                <Link v-if="canRegister" :href="route('register')"
                     >Register</Link
                 >
             </template>
         </div>
 
-        <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-            <div
-                class="flex flex-col md:flex-row justify-center pt-8 sm:justify-start sm:pt-0"
-            >
-                <p class="text-4xl text-white">The Training Journal</p>
-                <p class="text-gray-400 max-w-xs ml-3 my-auto">
-                    Maintain your workout history in the cloud
-                </p>
+        <div class="flex">
+            <div class="flex column q-mx-auto">
+                <p class="text-h4">The Training Journal</p>
+                <p>Maintain your workout history in the cloud</p>
             </div>
         </div>
     </div>

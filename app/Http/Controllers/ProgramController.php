@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
 use App\Models\Program;
@@ -15,7 +17,12 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        //
+
+        $programs = Program::all();
+
+        return Inertia::render('Programs', [
+            'programs' => $programs
+        ]);
     }
 
     /**

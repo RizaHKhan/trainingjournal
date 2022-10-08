@@ -1,24 +1,41 @@
 <template>
-    <input
-        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        ref="input"
-    />
+    <q-input ref="input" outlined :class="[...classes]" dense no-error-icon>
+        <template v-for="(_, slot) in $slots" #[slot]="scope">
+            <slot :name="slot" v-bind="scope || {}" />
+        </template>
+    </q-input>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-
-defineProps(["modelValue"]);
-
-defineEmits(["update:modelValue"]);
+import { ref, computed } from "vue";
 
 const input = ref(null);
 
-onMounted(() => {
-    if (input.value.hasAttribute("autofocus")) {
-        input.value.focus();
+const classes = computed(() => {
+    const classes = [];
+
+    const beforeField = input?.value?.$el.querySelector(".q-field__before");
+    if (beforeField) {
+        classes.push("with-before");
     }
+
+    const afterField = input?.value?.$el.querySelector(".q-field__after");
+    if (afterField) {
+        classes.push("with-after");
+    }
+
+    return classes;
 });
 </script>
+
+<style lang="scss">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+</style>
