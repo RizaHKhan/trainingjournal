@@ -9,16 +9,16 @@
 
             <q-btn-dropdown :label="$page.props.auth.user.name" flat>
                 <q-list>
-                    <q-item clickable v-close-popup :href="route('programs')">
-                        <q-item-section>
-                            <q-item-label>Programs</q-item-label>
-                        </q-item-section>
+                    <q-item clickable v-close-popup>
+                        <Link href="/programs" class="flex full-width"
+                            >Programs</Link
+                        >
                     </q-item>
 
-                    <q-item clickable v-close-popup :href="route('exercises')">
-                        <q-item-section>
-                            <q-item-label>Exercises</q-item-label>
-                        </q-item-section>
+                    <q-item clickable v-close-popup href="/exercises">
+                        <Link href="/exercises" class="flex full-width"
+                            >Exercises</Link
+                        >
                     </q-item>
 
                     <q-item clickable v-close-popup>
