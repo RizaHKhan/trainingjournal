@@ -25,31 +25,25 @@
                 label="Password"
             />
 
-            <div class="block mt-4">
-                <Checkbox
-                    name="remember"
-                    v-model="form.remember"
-                    label="Remember me"
-                />
-            </div>
+            <Checkbox
+                name="remember"
+                v-model="form.remember"
+                label="Remember me"
+            />
 
-            <div class="flex justify-center">
-                <Link
-                    v-if="canResetPassword"
-                    :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900"
-                >
-                    Forgot your password?
-                </Link>
-            </div>
-            <div class="flex">
-                <Button
-                    :disabled="form.processing"
-                    type="submit"
-                    label="Log in"
-                    class="full-width"
-                />
-            </div>
+            <Link
+                v-if="canResetPassword"
+                :href="route('password.request')"
+                class="underline text-sm text-gray-600 hover:text-gray-900"
+            >
+                Forgot your password?
+            </Link>
+            <Button
+                :disabled="form.processing"
+                type="submit"
+                label="Log in"
+                class="full-width"
+            />
         </q-form>
     </GuestLayout>
 </template>
