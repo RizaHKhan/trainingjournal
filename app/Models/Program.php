@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Program extends Model
 {
@@ -13,4 +14,9 @@ class Program extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function exercises(): BelongsToMany
+    {
+        return $this->belongsToMany(Exercise::class);
+    }
 }

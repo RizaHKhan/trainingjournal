@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ExerciseController;
+use App\Http\Controllers\WorkoutController;
+
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +36,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
 
     Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises');
+
+    Route::post('/workout/{program}', [WorkoutController::class, 'show'])->name('workout');
 });
 
 

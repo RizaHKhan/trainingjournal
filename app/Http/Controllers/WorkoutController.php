@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
+
 use App\Http\Requests\StoreWorkoutRequest;
 use App\Http\Requests\UpdateWorkoutRequest;
+use App\Models\Program;
 use App\Models\Workout;
+
+use Illuminate\Http\Request;
 
 class WorkoutController extends Controller
 {
@@ -13,9 +18,8 @@ class WorkoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
     }
 
     /**
@@ -45,9 +49,11 @@ class WorkoutController extends Controller
      * @param  \App\Models\Workout  $workout
      * @return \Illuminate\Http\Response
      */
-    public function show(Workout $workout)
+    public function show(Request $request, Program $program)
     {
-        //
+        return Inertia::render('Workout', [
+            'exercises' => $program->exercises
+        ]);
     }
 
     /**
