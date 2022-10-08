@@ -11,6 +11,7 @@ import { Quasar } from "quasar";
 import Button from "@/Components/Button.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import TextInput from "@/Components/TextInput.vue";
+import Table from "@/Components/Table.vue";
 
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
@@ -34,6 +35,7 @@ createInertiaApp({
             .component("Button", Button)
             .component("Checkbox", Checkbox)
             .component("TextInput", TextInput)
+            .component("Table", Table)
             .mount(el);
     },
 });
