@@ -65,7 +65,7 @@ class WorkoutSeeder extends Seeder
             DB::table('workouts')->insert([
                 'user_id'    => $item['user_id'],
                 'program_id' => $item['program_id'],
-                'exercises'       => json_encode($item['exercises']),
+                'exercises'  => json_encode($item['exercises']),
                 'date'       => $item['date'],
                 'created_at' => now(),
                 'updated_at' => now()
