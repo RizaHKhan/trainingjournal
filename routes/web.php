@@ -30,7 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
 
-    Route::apiResource('/programs', ProgramController::class);
+    Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
 });
 
 
