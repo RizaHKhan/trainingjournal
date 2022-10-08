@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
 class ProgramSeeder extends Seeder
@@ -14,6 +14,18 @@ class ProgramSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('programs')->insert([
+            'name'        => 'Day 1',
+            'description' => 'Day 1 Description',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
+
+        DB::table('programs')->insert([
+            'name'        => 'Day 2',
+            'description' => 'Day 2 Description',
+            'created_at'  => now(),
+            'updated_at'  => now()
+        ]);
     }
 }
