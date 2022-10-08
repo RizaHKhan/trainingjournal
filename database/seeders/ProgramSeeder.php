@@ -17,6 +17,7 @@ class ProgramSeeder extends Seeder
         DB::table('programs')->insert([
             'name'        => 'Day 1',
             'description' => 'Day 1 Description',
+            'user_id'     => 1,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -24,6 +25,7 @@ class ProgramSeeder extends Seeder
         DB::table('programs')->insert([
             'name'        => 'Day 2',
             'description' => 'Day 2 Description',
+            'user_id'     => 1,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
