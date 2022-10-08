@@ -15,7 +15,6 @@
                         <pre>
                           {{ programs }}
                         </pre>
-                        <q-input />
                     </div>
                 </div>
             </div>
