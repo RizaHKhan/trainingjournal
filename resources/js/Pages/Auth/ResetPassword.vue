@@ -50,12 +50,12 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <PrimaryButton
+                <Button
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
                 >
                     Reset Password
-                </PrimaryButton>
+                </Button>
             </div>
         </form>
     </GuestLayout>
@@ -65,7 +65,6 @@
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, useForm } from "@inertiajs/inertia-vue3";
 

@@ -6,7 +6,7 @@
             {{ status }}
         </div>
 
-        <form @submit.prevent="submit">
+        <q-form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />
                 <TextInput
@@ -50,15 +50,16 @@
                     Forgot your password?
                 </Link>
 
-                <PrimaryButton
+                <Button
                     class="ml-4"
                     :class="{ 'opacity-25': form.processing }"
                     :disabled="form.processing"
+                    type="submit"
                 >
                     Log in
-                </PrimaryButton>
+                </Button>
             </div>
-        </form>
+        </q-form>
     </GuestLayout>
 </template>
 
@@ -67,7 +68,6 @@ import Checkbox from "@/Components/Checkbox.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/Components/InputError.vue";
 import InputLabel from "@/Components/InputLabel.vue";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import TextInput from "@/Components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 
