@@ -8,11 +8,12 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { Quasar } from "quasar";
 
+import Button from "@/Components/Button.vue";
+
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
 
-const appName =
-    window.document.getElementsByTagName("title")[0]?.innerText || "Laravel";
+const appName = "The Training Journal";
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -28,6 +29,7 @@ createInertiaApp({
                 plugins: {},
             })
             .use(ZiggyVue, Ziggy)
+            .component("Button", Button)
             .mount(el);
     },
 });

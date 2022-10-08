@@ -1,3 +1,4 @@
+import { resolve } from "path";
 import { defineConfig } from "vite";
 import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 import laravel from "laravel-vite-plugin";
@@ -21,4 +22,9 @@ export default defineConfig({
             sassVariables: "resources/css/quasar-variables.scss",
         }),
     ],
+    resolve: {
+        alias: {
+            "@": resolve(__dirname, "./resources/js/"),
+        },
+    },
 });
