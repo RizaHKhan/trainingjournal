@@ -12,6 +12,8 @@ import Button from "@/Components/Button.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import TextInput from "@/Components/TextInput.vue";
 import Table from "@/Components/Table.vue";
+import Modal from "@/Components/Modal.vue";
+import Row from "@/Components/Row.vue";
 
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
@@ -36,6 +38,8 @@ createInertiaApp({
             .component("Checkbox", Checkbox)
             .component("TextInput", TextInput)
             .component("Table", Table)
+            .component("Modal", Modal)
+            .component("Row", Row)
             .mount(el);
     },
 });
