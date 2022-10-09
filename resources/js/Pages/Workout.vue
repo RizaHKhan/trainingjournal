@@ -26,9 +26,7 @@
                         </Table>
                         <Row justify="flex-end">
                             <Button label="Save" @click="saveWorkoutData" />
-                            {{ workoutId }}
                         </Row>
-                        {{ exercises }}
                     </div>
                 </div>
             </div>
