@@ -15,8 +15,8 @@ class CreateExerciseProgramPivotTable extends Migration
     {
         Schema::create('exercise_program', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exercise_id')->constrained('exercises');
-            $table->foreignId('program_id')->constrained('programs');
+            $table->foreignId('exercise_id')->constrained('exercises')->onDelete('cascade');
+            $table->foreignId('program_id')->constrained('programs')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users');
             $table->timestamps();
         });
