@@ -5,7 +5,9 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6 bg-white border-b border-gray-200">
-                        <p class="text-h3">{{ date }}</p>
+                        <Row justify="center">
+                            <p class="text-h6">{{ date }}</p>
+                        </Row>
                         <Table
                             :rows="exercises"
                             cols="workoutHeader"
@@ -22,9 +24,11 @@
                                 </q-td>
                             </template>
                         </Table>
-                        <Row justify="end">
-                            <Button label="Save" />
+                        <Row justify="flex-end">
+                            <Button label="Save" @click="saveWorkoutData" />
+                            {{ workoutId }}
                         </Row>
+                        {{ exercises }}
                     </div>
                 </div>
             </div>
@@ -34,6 +38,7 @@
 
 <script setup lang="ts">
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Inertia } from "@inertiajs/inertia";
 import { Head } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
@@ -45,5 +50,23 @@ const props = defineProps({
         type: String,
         default: "",
     },
+    workoutId: {
+        type: Number,
+        default: -1,
+    },
+    programId: {
+        type: Number,
+        default: -1,
+    },
 });
+
+const saveWorkoutData = () => {
+    if (props.workoutId) {
+        Inertia.put(`/workout/${props.workoutId}`, {
+            exercises: props.exercises,
+        });
+    } else {
+        Inertia.post("/workout", { exercises: props.exercises });
+    }
+};
 </script>

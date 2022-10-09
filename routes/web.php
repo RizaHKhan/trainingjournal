@@ -38,6 +38,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises');
 
     Route::get('/workout/{program}', [WorkoutController::class, 'show'])->name('workout');
+    Route::post('/workout', [WorkoutController::class, 'create'])->name('createWorkout');
+    Route::put('/workout/{workout}', [WorkoutController::class, 'update'])->name('updateWorkout');
 });
 
 

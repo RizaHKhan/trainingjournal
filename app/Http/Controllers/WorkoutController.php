@@ -69,14 +69,16 @@ class WorkoutController extends Controller
         if (!$existingWorkout) {
             $exercises = $program->exercises->map(function ($exercise) {
                 return [
-                    'name'   => $exercise->name,
-                    'weight' => 0,
-                    'rpe'    => 0
+                    'exercise_id' => $exercise->id,
+                    'name'        => $exercise->name,
+                    'weight'      => 0,
+                    'rpe'         => 0
                 ];
             });
 
             return Inertia::render('Workout', [
                 'exercises' => $exercises,
+                'programId' => $program->id,
                 'date'      => $request->date
             ]);
         } else {
@@ -84,14 +86,17 @@ class WorkoutController extends Controller
 
             $exercises = array_map(function ($exercise) {
                 return [
-                    'name'   => Exercise::find($exercise['exercise_id'])->only('name')['name'],
-                    'weight' => $exercise['weight'],
-                    'rpe'    => $exercise['rpe']
+                    'exercise_id' => $exercise['exercise_id'],
+                    'name'        => Exercise::find($exercise['exercise_id'])->only('name')['name'],
+                    'weight'      => $exercise['weight'],
+                    'rpe'         => $exercise['rpe']
                 ];
             }, $decoded);
 
             return Inertia::render('Workout', [
                 'exercises' => $exercises,
+                'workoutId' => $existingWorkout->id,
+                'programId' => $program->id,
                 'date'      => $request->date
             ]);
         }
@@ -117,7 +122,12 @@ class WorkoutController extends Controller
      */
     public function update(UpdateWorkoutRequest $request, Workout $workout)
     {
-        //
+        $request->validated();
+        $workout->update(['exercises' => $request->exercises]);
+
+        return [
+            'success' => true
+        ];
     }
 
     /**
