@@ -61,8 +61,4 @@ defineProps({
         default: () => [],
     },
 });
-
-const handleEditClick = (id: number) => {
-    route("editProgram", { program: id });
-};
 </script>

@@ -27,6 +27,11 @@ export default function useTable() {
                 align: "left",
                 field: (row: { name: string; description: string }) => row.name,
             },
+            {
+                name: "actions",
+                label: "Actions",
+                align: "left",
+            },
         ],
         programHeaders: [
             {

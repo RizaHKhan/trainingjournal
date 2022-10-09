@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
+use App\Models\Exercise;
 use App\Models\Program;
 
 class ProgramController extends Controller
@@ -65,8 +66,12 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
+        $target    = Program::with(['exercises'])->where(['id' => $program->id])->first();
+        $exercises = Exercise::all();
+
         return Inertia::render('Program/EditProgram', [
-            'program' => $program
+            'program'   => $target,
+            'exercises' => $exercises
         ]);
     }
 
@@ -79,7 +84,32 @@ class ProgramController extends Controller
      */
     public function update(UpdateProgramRequest $request, Program $program)
     {
-        //
+        $user = $request->user();
+        $program->update([
+            'name'        => $request->name,
+            'description' => $request->description,
+        ]);
+
+        array_map(function ($exercise) use ($program, $user) {
+            $id = $exercise['id'];
+            if (!$program->exercises->contains($id)) {
+                $program->exercises()->toggle([['exercise_id' => $id, 'user_id' => $user->id]]);
+            }
+        }, $request->exercises);
+
+        // If request array doesn't have item, toggle it
+        $requestExerciseIds = array_map(function ($exercise) {
+            return $exercise['id'];
+        }, $request->exercises);
+
+        array_map(function ($exercise) use ($requestExerciseIds, $program) {
+            $id = $exercise['id'];
+            if (!in_array($id, $requestExerciseIds)) {
+                $program->exercises()->toggle($id);
+            }
+        }, $program->exercises->toArray());
+
+        return ['success' => true];
     }
 
     /**

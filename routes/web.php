@@ -35,6 +35,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
     Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('editProgram');
+    Route::put('/programs/{program}', [ProgramController::class, 'update'])->name('updateProgram');
     Route::delete('/programs/{program}', [ProgramController::class, 'destroy'])->name('deleteProgram');
 
     Route::get('/exercises', [ExerciseController::class, 'index'])->name('exercises');

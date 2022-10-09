@@ -15,6 +15,11 @@ class Program extends Model
         'updated_at',
     ];
 
+    protected $fillable = [
+        'name',
+        'description'
+    ];
+
     public function exercises(): BelongsToMany
     {
         return $this->belongsToMany(Exercise::class);
