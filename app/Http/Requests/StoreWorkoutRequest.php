@@ -24,7 +24,12 @@ class StoreWorkoutRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'program_id'              => ['required', 'integer'],
+            'date'                    => ['required', 'date'],
+            'exercises'               => ['required'],
+            'exercises.*.exercise_id' => ['required', 'integer'],
+            'exercises.*.weight'      => ['required', 'integer'],
+            'exercises.*.rpe'         => ['required', 'integer'],
         ];
     }
 }
