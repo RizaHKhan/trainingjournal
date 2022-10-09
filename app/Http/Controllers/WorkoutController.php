@@ -41,7 +41,16 @@ class WorkoutController extends Controller
      */
     public function store(StoreWorkoutRequest $request)
     {
-        //
+        $user = $request->user();
+
+        Workout::create([
+            'exercises'  => json_encode($request->exercises),
+            'date'       => $request->date,
+            'program_id' => $request->program_id,
+            'user_id'    => $user->id,
+        ]);
+
+        return Inertia::render('Dashboard');
     }
 
     /**
@@ -125,9 +134,7 @@ class WorkoutController extends Controller
         $request->validated();
         $workout->update(['exercises' => $request->exercises]);
 
-        return [
-            'success' => true
-        ];
+        return Inertia::render('Dashboard');
     }
 
     /**

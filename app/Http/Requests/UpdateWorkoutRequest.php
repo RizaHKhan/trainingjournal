@@ -24,7 +24,10 @@ class UpdateWorkoutRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'exercises'               => ['required'],
+            'exercises.*.exercise_id' => ['required', 'integer'],
+            'exercises.*.weight'      => ['required', 'integer'],
+            'exercises.*.rpe'         => ['required', 'integer'],
         ];
     }
 }

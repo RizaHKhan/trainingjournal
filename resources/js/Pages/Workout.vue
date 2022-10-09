@@ -61,12 +61,16 @@ const props = defineProps({
 });
 
 const saveWorkoutData = () => {
-    if (props.workoutId) {
+    if (props.workoutId > 0) {
         Inertia.put(`/workout/${props.workoutId}`, {
             exercises: props.exercises,
         });
     } else {
-        Inertia.post("/workout", { exercises: props.exercises });
+        Inertia.post("/workout", {
+            program_id: props.programId,
+            date: props.date,
+            exercises: props.exercises,
+        });
     }
 };
 </script>
