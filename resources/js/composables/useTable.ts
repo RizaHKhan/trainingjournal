@@ -28,7 +28,7 @@ export default function useTable() {
                 field: (row: { name: string; description: string }) => row.name,
             },
         ],
-        programsHeader: [
+        programHeaders: [
             {
                 name: "name",
                 label: "Name",
@@ -40,6 +40,16 @@ export default function useTable() {
                 label: "Description",
                 field: (row: { name: string; description: string }) =>
                     row.description,
+                align: "left",
+            },
+            {
+                name: "exercises",
+                label: "Exercises",
+                align: "left",
+            },
+            {
+                name: "actions",
+                label: "Actions",
                 align: "left",
             },
         ],

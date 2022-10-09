@@ -18,7 +18,7 @@ class ProgramController extends Controller
     public function index()
     {
 
-        $programs = Program::all();
+        $programs = Program::with(['exercises'])->get();
 
         return Inertia::render('Programs', [
             'programs' => $programs

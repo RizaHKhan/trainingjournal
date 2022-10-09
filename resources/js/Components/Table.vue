@@ -1,5 +1,10 @@
 <template>
-    <q-table flat style="width: 100%" :columns="columns[cols]">
+    <q-table
+        flat
+        style="width: 100%"
+        :columns="columns[cols]"
+        :hide-pagination="true"
+    >
         <template v-for="(_, slot) in $slots" #[slot]="scope">
             <slot :name="slot" v-bind="scope || {}" />
         </template>
