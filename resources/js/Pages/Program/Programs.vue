@@ -1,5 +1,5 @@
 <template>
-    <Head title="Dashboard" />
+    <Head title="Programs" />
     <AuthenticatedLayout header="Programs">
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -21,22 +21,39 @@
 
                             <template #body-cell-actions="{ row }">
                                 <q-td>
-                                    <Button icon="delete" flat />
-                                    <Button icon="edit" flat />
+                                    <Link
+                                        class="link icon"
+                                        :href="
+                                            route('deleteProgram', {
+                                                program: row.id,
+                                            })
+                                        "
+                                        method="delete"
+                                        ><Icon name="delete"
+                                    /></Link>
+                                    <Link
+                                        class="link icon"
+                                        :href="
+                                            route('editProgram', {
+                                                program: row.id,
+                                            })
+                                        "
+                                    >
+                                        <Icon name="edit" />
+                                    </Link>
                                 </q-td>
                             </template>
                         </Table>
                     </div>
                 </div>
             </div>
-            <pre>{{ programs }}</pre>
         </div>
     </AuthenticatedLayout>
 </template>
 
 <script setup lang="ts">
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head, Link } from "@inertiajs/inertia-vue3";
 
 defineProps({
     programs: {
@@ -44,4 +61,8 @@ defineProps({
         default: () => [],
     },
 });
+
+const handleEditClick = (id: number) => {
+    route("editProgram", { program: id });
+};
 </script>

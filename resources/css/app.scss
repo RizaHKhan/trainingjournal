@@ -1,0 +1,10 @@
+@import './quasar-variables.scss';
+
+.link {
+  color: $secondary;
+  text-decoration: none;
+}
+
+.link.icon {
+  cursor: pointer;
+}

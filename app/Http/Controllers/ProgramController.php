@@ -20,7 +20,7 @@ class ProgramController extends Controller
 
         $programs = Program::with(['exercises'])->get();
 
-        return Inertia::render('Programs', [
+        return Inertia::render('Program/Programs', [
             'programs' => $programs
         ]);
     }
@@ -65,7 +65,9 @@ class ProgramController extends Controller
      */
     public function edit(Program $program)
     {
-        //
+        return Inertia::render('Program/EditProgram', [
+            'program' => $program
+        ]);
     }
 
     /**
@@ -88,6 +90,11 @@ class ProgramController extends Controller
      */
     public function destroy(Program $program)
     {
-        //
+        $program->delete();
+        $programs = Program::with(['exercises'])->get();
+
+        return Inertia::render('Program/Programs', [
+            'programs' => $programs
+        ]);
     }
 }
