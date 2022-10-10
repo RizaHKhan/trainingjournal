@@ -11,6 +11,7 @@ use App\Models\Program;
 use App\Models\Workout;
 
 use Illuminate\Http\Request;
+use Inertia\Response;
 
 class WorkoutController extends Controller
 {
@@ -39,7 +40,7 @@ class WorkoutController extends Controller
      * @param  \App\Http\Requests\StoreWorkoutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreWorkoutRequest $request)
+    public function store(StoreWorkoutRequest $request): Response
     {
         $user = $request->user();
 
@@ -59,7 +60,7 @@ class WorkoutController extends Controller
      * @param  \App\Models\Workout  $workout
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, Program $program)
+    public function show(Request $request, Program $program): Response
     {
         if (!$request->date) {
             return Inertia::render('Dashboard');
@@ -81,7 +82,8 @@ class WorkoutController extends Controller
                     'exercise_id' => $exercise->id,
                     'name'        => $exercise->name,
                     'weight'      => 0,
-                    'rpe'         => 0
+                    'rpe'         => 0,
+                    'comment'     => ''
                 ];
             });
 
@@ -97,8 +99,9 @@ class WorkoutController extends Controller
                 return [
                     'exercise_id' => $exercise['exercise_id'],
                     'name'        => Exercise::find($exercise['exercise_id'])->only('name')['name'],
-                    'weight'      => $exercise['weight'],
-                    'rpe'         => $exercise['rpe']
+                    'weight'      => $exercise['weight'] ?? 0,
+                    'rpe'         => $exercise['rpe'] ?? 0,
+                    'comment'     => $exercise['comment'] ?? ''
                 ];
             }, $decoded);
 
@@ -129,7 +132,7 @@ class WorkoutController extends Controller
      * @param  \App\Models\Workout  $workout
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWorkoutRequest $request, Workout $workout)
+    public function update(UpdateWorkoutRequest $request, Workout $workout): Response
     {
         $request->validated();
         $workout->update(['exercises' => $request->exercises]);
