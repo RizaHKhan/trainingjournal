@@ -3,12 +3,17 @@
         <nav class="flex justify-between">
             <div class="shrink-0 flex items-center">
                 <Link :href="route('dashboard')">
-                    <ApplicationLogo class="block h-9 w-auto" />
+                    <ApplicationLogo />
                 </Link>
             </div>
 
             <div class="q-gutter-xs">
-                <Modal label="Workout" color="green" title="Add Workout">
+                <Modal
+                    label="Workout"
+                    color="green"
+                    title="Add Workout"
+                    icon="add"
+                >
                     <Row column>
                         <Select
                             v-model="workout.program"

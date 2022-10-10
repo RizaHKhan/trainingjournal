@@ -14,13 +14,23 @@
                                 v-model="form.description"
                                 label="Program Description"
                             />
-                            <Row grid columns="200px 150px">
-                                <Select
-                                    v-model="selectedExercise"
-                                    map-options
-                                    emit-value
-                                    option-label="name"
-                                    :options="
+                            <Table
+                                title="Exercises"
+                                :rows="form.exercises"
+                                cols="exercisesHeader"
+                            >
+                                <template #top>
+                                    <Row column>
+                                        <p class="text-h6 q-ma-none">
+                                            Exercises
+                                        </p>
+                                        <Row justify="flex-end">
+                                            <Select
+                                                v-model="selectedExercise"
+                                                map-options
+                                                emit-value
+                                                option-label="name"
+                                                :options="
                                         exercises.filter(
                                             (exericse):boolean =>
                                                 !program.exercises
@@ -28,16 +38,14 @@
                                                     .includes(exericse.id)
                                         )
                                     "
-                                />
-                                <Button
-                                    label="Add Exercise"
-                                    @click="handleAddExercise"
-                                />
-                            </Row>
-                            <Table
-                                :rows="form.exercises"
-                                cols="exercisesHeader"
-                            >
+                                            />
+                                            <Button
+                                                label="Add Exercise"
+                                                @click="handleAddExercise"
+                                            />
+                                        </Row>
+                                    </Row>
+                                </template>
                                 <template #body-cell-actions="{ row }">
                                     <q-td>
                                         <Button
@@ -55,14 +63,13 @@
                 </div>
             </div>
         </div>
-        <pre>{{ program }}</pre>
     </AuthenticatedLayout>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 interface Exercise {
     id: number;
