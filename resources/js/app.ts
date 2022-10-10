@@ -8,7 +8,7 @@ import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
 import { Quasar } from "quasar";
 
-import Button from "@/Components/Button.vue";
+import Button from "@/Components/Button/Index.vue";
 import Checkbox from "@/Components/Checkbox.vue";
 import TextInput from "@/Components/TextInput.vue";
 import Table from "@/Components/Table.vue";

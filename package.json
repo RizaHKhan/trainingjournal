@@ -1,27 +1,39 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@inertiajs/inertia": "^0.11.0",
-        "@inertiajs/inertia-vue3": "^0.6.0",
-        "@inertiajs/progress": "^0.2.7",
-        "@quasar/vite-plugin": "^1.2.3",
-        "@vitejs/plugin-vue": "^3.0.0",
-        "autoprefixer": "^10.4.2",
-        "axios": "^0.27",
-        "laravel-vite-plugin": "^0.6.0",
-        "lodash": "^4.17.19",
-        "postcss": "^8.4.6",
-        "sass": "^1.32.12",
-        "vite": "^3.0.0",
-        "vue": "^3.2.31"
-    },
-    "dependencies": {
-        "@quasar/extras": "^1.15.4",
-        "quasar": "^2.9.2",
-        "typescript": "^4.8.4"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@inertiajs/inertia": "^0.11.0",
+    "@inertiajs/inertia-vue3": "^0.6.0",
+    "@inertiajs/progress": "^0.2.7",
+    "@quasar/vite-plugin": "^1.2.3",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-vite": "^0.2.4",
+    "@storybook/testing-library": "^0.0.13",
+    "@storybook/vue3": "^6.5.12",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "autoprefixer": "^10.4.2",
+    "axios": "^0.27",
+    "babel-loader": "^8.2.5",
+    "laravel-vite-plugin": "^0.6.0",
+    "lodash": "^4.17.19",
+    "postcss": "^8.4.6",
+    "sass": "^1.32.12",
+    "vite": "^3.0.0",
+    "vue": "^3.2.31",
+    "vue-loader": "^16.8.3"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.15.4",
+    "quasar": "^2.9.2",
+    "typescript": "^4.8.4"
+  }
 }
