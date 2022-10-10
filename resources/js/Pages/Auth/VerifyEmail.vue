@@ -40,7 +40,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
 
 const props = defineProps({
     status: String,
