@@ -11,6 +11,8 @@ use App\Models\Program;
 use App\Models\Workout;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Inertia\Response;
 
 class WorkoutController extends Controller
@@ -40,7 +42,7 @@ class WorkoutController extends Controller
      * @param  \App\Http\Requests\StoreWorkoutRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreWorkoutRequest $request): Response
+    public function store(StoreWorkoutRequest $request): RedirectResponse
     {
         $user = $request->user();
 
@@ -51,7 +53,7 @@ class WorkoutController extends Controller
             'user_id'    => $user->id,
         ]);
 
-        return Inertia::render('Dashboard');
+        return Redirect::route('dashboard');
     }
 
     /**
@@ -132,12 +134,12 @@ class WorkoutController extends Controller
      * @param  \App\Models\Workout  $workout
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateWorkoutRequest $request, Workout $workout): Response
+    public function update(UpdateWorkoutRequest $request, Workout $workout): RedirectResponse
     {
         $request->validated();
         $workout->update(['exercises' => $request->exercises]);
 
-        return Inertia::render('Dashboard');
+        return Redirect::route('dashboard');
     }
 
     /**

@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'measurement_system'
     ];
 
     /**
@@ -43,9 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
     public function programs(): HasMany
     {
         return $this->hasMany(Program::class);
+    }
+
+    public function workouts(): HasMany
+    {
+        return $this->hasMany(Workout::class);
     }
 }
