@@ -16,46 +16,52 @@ class WorkoutSeeder extends Seeder
     {
         $arr = array('workouts' => [
             [
-                'date'       => '2022/10/08',
+                'date'       => '2022/10/09',
                 'program_id' => 1,
                 'user_id'    => 1,
                 'exercises'  => [
                     [
                         'exercise_id' => 1,
                         'weight'      => 100,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => 'Things went well, but were difficult'
                     ],
                     [
                         'exercise_id' => 3,
                         'weight'      => 200,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => ''
                     ],
                     [
                         'exercise_id' => 4,
                         'weight'      => 300,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => 'Difficult, could not get underneath it'
                     ]
                 ]
             ],
             [
-                'date'       => '2022/10/09',
+                'date'       => '2022/10/10',
                 'program_id' => 2,
                 'user_id'    => 1,
                 'exercises'  => [
                     [
                         'exercise_id' => 2,
                         'weight'      => 100,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => 'Some other stuff was distracting me'
                     ],
                     [
                         'exercise_id' => 3,
                         'weight'      => 200,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => ''
                     ],
                     [
                         'exercise_id' => 4,
                         'weight'      => 300,
-                        'rpe'         => 4
+                        'rpe'         => 4,
+                        'comment'     => 'It was difficult and I had some pain'
                     ]
                 ]
             ]
