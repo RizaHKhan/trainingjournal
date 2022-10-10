@@ -19,6 +19,12 @@ export default function useTable() {
                 align: "left",
                 field: (row: { rpe: number }) => row.rpe,
             },
+            {
+                name: "comment",
+                label: "Comment",
+                align: "left",
+                field: (row: { comment: string }) => row.comment,
+            },
         ],
         exercisesHeader: [
             {
