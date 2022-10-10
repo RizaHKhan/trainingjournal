@@ -8,6 +8,10 @@ use App\Http\Requests\StoreProgramRequest;
 use App\Http\Requests\UpdateProgramRequest;
 use App\Models\Exercise;
 use App\Models\Program;
+use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Response;
 
 class ProgramController extends Controller
 {
@@ -16,10 +20,10 @@ class ProgramController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request): Response
     {
-
-        $programs = Program::with(['exercises'])->get();
+        $user = $request->user();
+        $programs = $user->programs;
 
         return Inertia::render('Program/Programs', [
             'programs' => $programs
@@ -64,7 +68,7 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program)
+    public function edit(Program $program): Response
     {
         $target    = Program::with(['exercises'])->where(['id' => $program->id])->first();
         $exercises = Exercise::all();
@@ -82,7 +86,7 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProgramRequest $request, Program $program)
+    public function update(UpdateProgramRequest $request, Program $program): RedirectResponse
     {
         $user = $request->user();
         $program->update([
@@ -109,7 +113,7 @@ class ProgramController extends Controller
             }
         }, $program->exercises->toArray());
 
-        return ['success' => true];
+        return Redirect::route('programs');
     }
 
     /**
@@ -118,7 +122,7 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Program $program)
+    public function destroy(Program $program): Response
     {
         $program->delete();
         $programs = Program::with(['exercises'])->get();
