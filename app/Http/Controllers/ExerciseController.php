@@ -19,7 +19,7 @@ class ExerciseController extends Controller
     {
         $exercises = Exercise::all();
 
-        return Inertia::render('Exercises', [
+        return Inertia::render('Private/Exercises', [
             'exercises' => $exercises
         ]);
     }

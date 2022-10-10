@@ -25,7 +25,7 @@ class ProgramController extends Controller
         $user = $request->user();
         $programs = $user->programs;
 
-        return Inertia::render('Program/Programs', [
+        return Inertia::render('Private/Program/Programs', [
             'programs' => $programs
         ]);
     }
@@ -73,7 +73,7 @@ class ProgramController extends Controller
         $target    = Program::with(['exercises'])->where(['id' => $program->id])->first();
         $exercises = Exercise::all();
 
-        return Inertia::render('Program/EditProgram', [
+        return Inertia::render('Private/Program/EditProgram', [
             'program'   => $target,
             'exercises' => $exercises
         ]);
@@ -127,7 +127,7 @@ class ProgramController extends Controller
         $program->delete();
         $programs = Program::with(['exercises'])->get();
 
-        return Inertia::render('Program/Programs', [
+        return Inertia::render('Private/Program/Programs', [
             'programs' => $programs
         ]);
     }

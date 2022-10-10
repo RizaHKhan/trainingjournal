@@ -65,7 +65,7 @@ class WorkoutController extends Controller
     public function show(Request $request, Program $program): Response
     {
         if (!$request->date) {
-            return Inertia::render('Dashboard');
+            return Inertia::render('Private/Dashboard');
         }
 
         $user = $request->user();
@@ -89,7 +89,7 @@ class WorkoutController extends Controller
                 ];
             });
 
-            return Inertia::render('Workout', [
+            return Inertia::render('Private/Workout', [
                 'exercises' => $exercises,
                 'programId' => $program->id,
                 'date'      => $request->date
@@ -107,7 +107,7 @@ class WorkoutController extends Controller
                 ];
             }, $decoded);
 
-            return Inertia::render('Workout', [
+            return Inertia::render('Private/Workout', [
                 'exercises' => $exercises,
                 'workoutId' => $existingWorkout->id,
                 'programId' => $program->id,
