@@ -12,10 +12,10 @@
                     <Row column>
                         <Select
                             v-model="workout.program"
-                            :options="$page.props.programs"
+                            :options="$page.props.auth.user.programs"
                             option-label="name"
+                            option-value="id"
                             emit-value
-                            dropdown-icon="keyboard_arrow_down"
                             map-options
                         />
                         <DatePicker v-model="workout.date" />
@@ -27,14 +27,8 @@
                             color="secondary"
                             @click="closeModal"
                         />
-                        <Link
-                            :href="
-                                route('workout', {
-                                    program: workout.program.id,
-                                    date: workout.date,
-                                })
-                            "
-                            >Workout</Link
+                        <Button @click="submit(closeModal)" class="primary"
+                            >Workout</Button
                         >
                     </template>
                 </Modal>
@@ -79,19 +73,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { date } from "quasar";
-import Logo from "@/Components/Logo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3";
+import Logo from "@/Components/Logo.vue";
 
-interface Program {
-    id: number;
-    name: string;
-}
-
-const workout = ref<{ date: string; program: Program }>({
+const workout = useForm({
     date: date.formatDate(new Date(), "YYYY/MM/DD"),
-    program: { id: 0, name: "" },
+    program: "",
 });
 
 defineProps({
@@ -100,4 +89,12 @@ defineProps({
         default: "",
     },
 });
+
+const submit = (callback: () => void) => {
+    workout.get(`/workout/${workout.program}`, {
+        onFinish: () => {
+            callback();
+        },
+    });
+};
 </script>
