@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,6 +14,14 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are appended to the model but do not appear on the database
+     *
+     * @var array<int, string>
+     */
+    protected $appends = ['programs'];
+
 
     /**
      * The attributes that are mass assignable.
@@ -52,5 +62,10 @@ class User extends Authenticatable
     public function workouts(): HasMany
     {
         return $this->hasMany(Workout::class);
+    }
+
+    public function getProgramsAttribute(): Collection
+    {
+        return $this->programs()->get();
     }
 }

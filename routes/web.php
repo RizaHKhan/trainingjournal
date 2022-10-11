@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\WorkoutController;
@@ -30,6 +31,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/settings', [UserController::class, 'index'])->name('settings');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
     Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('editProgram');
