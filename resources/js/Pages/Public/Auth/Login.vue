@@ -1,37 +1,46 @@
 <template>
     <Head title="Log in" />
 
-    <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
+    <div v-if="status">
         {{ status }}
     </div>
 
     <q-form @submit.prevent="submit" class="flex column q-gutter-sm">
         <TextInput
             type="email"
-            class="mt-1 block w-full"
             v-model="form.email"
-            required
             autofocus
             autocomplete="username"
             label="Email"
-        />
+            :error="!!form.errors.email"
+            @focus="form.clearErrors('email')"
+        >
+            <template #error>
+                {{ form.errors.email }}
+            </template>
+        </TextInput>
 
         <TextInput
             type="password"
             v-model="form.password"
-            required
             autocomplete="current-password"
             label="Password"
-        />
+            :error="!!form.errors.password"
+            @focus="form.clearErrors('password')"
+        >
+            <template #error>
+                {{ form.errors.password }}
+            </template>
+        </TextInput>
 
         <Checkbox name="remember" v-model="form.remember" label="Remember me" />
 
-        <Link
-            v-if="canResetPassword"
-            :href="route('password.request')"
-            class="underline text-sm text-gray-600 hover:text-gray-900"
-        >
+        <Link v-if="canResetPassword" :href="route('password.request')">
             Forgot your password?
+        </Link>
+
+        <Link :href="route('register')">
+            Not yet a member? Register first.
         </Link>
         <Button
             :disabled="form.processing"

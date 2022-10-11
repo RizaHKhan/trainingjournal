@@ -1,19 +1,14 @@
 <template>
     <div class="q-pa-sm">
-        <nav class="flex justify-between">
-            <div class="shrink-0 flex items-center">
+        <Row justify="space-between">
+            <div>
                 <Link :href="route('dashboard')">
-                    <ApplicationLogo />
+                    <Logo />
                 </Link>
             </div>
 
             <div class="q-gutter-xs">
-                <Modal
-                    label="Workout"
-                    color="green"
-                    title="Add Workout"
-                    icon="add"
-                >
+                <Modal label="Add Workout" color="green" title="Add Workout">
                     <Row column>
                         <Select
                             v-model="workout.program"
@@ -71,7 +66,7 @@
                     </q-list>
                 </q-btn-dropdown>
             </div>
-        </nav>
+        </Row>
 
         <header>
             <p class="text-h4">{{ header }}</p>
@@ -86,7 +81,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { date } from "quasar";
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import Logo from "@/Components/Logo.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 
 interface Program {
