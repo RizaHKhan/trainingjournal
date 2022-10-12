@@ -1,18 +1,32 @@
 <template>
-    <div class="q-pa-sm">
-        <Row justify="space-between">
-            <div>
-                <Link :href="route('dashboard')">
-                    <Logo />
-                </Link>
-            </div>
+    <q-layout view="hHh lpR fFf">
+        <q-header elevated class="bg-primary text-white" height-hint="98">
+            <q-toolbar>
+                <q-btn
+                    dense
+                    flat
+                    round
+                    icon="menu"
+                    @click="leftDrawerOpen = !leftDrawerOpen"
+                />
 
-            <div class="q-gutter-xs">
-                <Modal label="Add Workout" color="green" title="Add Workout">
+                <q-toolbar-title>
+                    <Link :href="route('dashboard')" class="logo">
+                        <Logo />
+                    </Link>
+                </q-toolbar-title>
+                <q-spacer />
+
+                <Modal
+                    label="Add Workout"
+                    color="green"
+                    title="Add Workout"
+                    class="q-mr-sm"
+                >
                     <Row column>
                         <Select
                             v-model="workout.program"
-                            :options="$page.props.auth.user.programs"
+                            :options="auth.user.programs"
                             option-label="name"
                             option-value="id"
                             emit-value
@@ -33,46 +47,63 @@
                     </template>
                 </Modal>
 
-                <q-btn-dropdown :label="$page.props.auth.user.name" flat>
+                <q-btn-dropdown :label="auth.user.name" flat>
                     <q-list>
-                        <q-item clickable v-close-popup>
-                            <Link href="/programs" class="flex full-width"
-                                >Programs</Link
+                        <q-item clickable v-close-popup class="q-pa-none">
+                            <Link href="/programs" class="flex full-width link"
+                                ><p class="q-my-auto q-mx-auto">
+                                    Program
+                                </p></Link
                             >
                         </q-item>
 
-                        <q-item clickable v-close-popup href="/exercises">
-                            <Link href="/exercises" class="flex full-width"
-                                >Exercises</Link
+                        <q-item clickable v-close-popup class="q-pa-none">
+                            <Link href="/exercises" class="flex full-width link"
+                                ><p class="q-my-auto q-mx-auto">
+                                    Exercises
+                                </p></Link
                             >
                         </q-item>
 
-                        <q-item clickable v-close-popup>
+                        <q-item clickable v-close-popup class="q-pa-none">
+                            <Link href="/settings" class="flex full-width link"
+                                ><p class="q-my-auto q-mx-auto">
+                                    Settings
+                                </p></Link
+                            >
+                        </q-item>
+
+                        <q-item clickable v-close-popup class="q-pa-none">
                             <q-item-section>
                                 <Link
                                     href="/logout"
                                     method="post"
-                                    class="flex full-width"
-                                    >Logout</Link
+                                    class="flex full-width link q-my-auto"
+                                    ><p class="q-my-auto q-mx-auto">
+                                        Logout
+                                    </p></Link
                                 >
                             </q-item-section>
                         </q-item>
                     </q-list>
                 </q-btn-dropdown>
-            </div>
-        </Row>
+            </q-toolbar>
+        </q-header>
 
-        <header>
-            <p class="text-h4">{{ header }}</p>
-        </header>
+        <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+            <!-- drawer content -->
+        </q-drawer>
 
-        <main>
-            <slot />
-        </main>
-    </div>
+        <q-page-container>
+            <q-page class="q-pa-sm">
+                <slot />
+            </q-page>
+        </q-page-container>
+    </q-layout>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { date } from "quasar";
 import { Link } from "@inertiajs/inertia-vue3";
 import { useForm } from "@inertiajs/inertia-vue3";
@@ -83,10 +114,16 @@ const workout = useForm({
     program: "",
 });
 
+const leftDrawerOpen = ref(true);
+
 defineProps({
     header: {
         type: String,
         default: "",
+    },
+    auth: {
+        type: Object,
+        default: () => {},
     },
 });
 

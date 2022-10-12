@@ -7,9 +7,9 @@
             }}</q-card-section>
             <q-card-section
                 >Max:
-                <span class="text-weight-bold">{{
-                    workout.max
-                }}</span></q-card-section
+                <span class="text-weight-bold"
+                    >{{ workout.max }} {{ auth.user.measurement.weight }}</span
+                ></q-card-section
             >
         </q-card>
     </Row>
@@ -19,6 +19,10 @@
 defineProps({
     workouts: {
         type: Array,
+    },
+    auth: {
+        type: Object,
+        default: () => {},
     },
 });
 </script>
