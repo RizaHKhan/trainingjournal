@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +21,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = ['programs', 'measurement'];
+    protected $appends = ['programs', 'measurement', 'roles'];
 
     /**
      * The attributes that are mass assignable.
@@ -42,6 +43,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'measurement_system'
     ];
 
     /**
@@ -53,6 +55,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
     public function programs(): HasMany
     {
         return $this->hasMany(Program::class);
@@ -61,6 +68,13 @@ class User extends Authenticatable
     public function workouts(): HasMany
     {
         return $this->hasMany(Workout::class);
+    }
+
+    public function getRolesAttribute()
+    {
+        return $this->roles()->get()->map(function ($role) {
+            return $role->name;
+        });
     }
 
     public function getProgramsAttribute(): Collection
