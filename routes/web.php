@@ -6,10 +6,8 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\ExerciseController;
 use App\Http\Controllers\WorkoutController;
 
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +30,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/settings', [UserController::class, 'index'])->name('settings');
+    Route::put('/settings', [UserController::class, 'update'])->name('update');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
     Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('editProgram');
