@@ -1,5 +1,9 @@
 @import './quasar-variables.scss';
 
+a {
+  text-decoration: none;
+}
+
 .link {
   color: $secondary;
   text-decoration: none;
@@ -18,4 +22,7 @@
 
 .logo {
   text-decoration: none;
+  color: white;
 }
+
+
