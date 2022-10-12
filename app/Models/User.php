@@ -20,8 +20,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = ['programs'];
-
+    protected $appends = ['programs', 'measurement'];
 
     /**
      * The attributes that are mass assignable.
@@ -67,5 +66,20 @@ class User extends Authenticatable
     public function getProgramsAttribute(): Collection
     {
         return $this->programs()->get();
+    }
+
+    public function getMeasurementAttribute(): array
+    {
+        if ($this->measurement_system === 'imperial') {
+            return [
+                'temperature' => 'Fahrenheit',
+                'weight'      => 'lb'
+            ];
+        } else {
+            return [
+                'temperature' => 'Celsius',
+                'weight'      => 'kg'
+            ];
+        }
     }
 }
