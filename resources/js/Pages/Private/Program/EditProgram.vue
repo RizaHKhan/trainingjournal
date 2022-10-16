@@ -84,7 +84,9 @@ const form = useForm({ ...props.program });
 
 const deleteExercise = (id: number) => {
     console.log(form.exercises);
-    form.exercises = form.exercises.filter((exercise) => exercise.id !== id);
+    form.exercises = form.exercises.filter(
+        (exercise: Exercise) => exercise.id !== id
+    );
 };
 
 const handleAddExercise = () => {

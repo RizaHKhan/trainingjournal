@@ -18,6 +18,7 @@ class CreateExerciseProgramPivotTable extends Migration
             $table->foreignId('exercise_id')->constrained('exercises')->onDelete('cascade');
             $table->foreignId('program_id')->constrained('programs')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users');
+            $table->integer('sets');
             $table->timestamps();
         });
     }

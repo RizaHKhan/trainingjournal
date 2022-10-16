@@ -18,6 +18,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 1,
             'exercise_id' => 1,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -26,6 +27,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 1,
             'exercise_id' => 3,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -34,6 +36,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 1,
             'exercise_id' => 4,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -42,6 +45,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 2,
             'exercise_id' => 2,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -50,6 +54,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 2,
             'exercise_id' => 3,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
@@ -58,6 +63,7 @@ class ExerciseProgramSeeder extends Seeder
             'program_id'  => 2,
             'exercise_id' => 4,
             'user_id'     => 1,
+            'sets'        => 5,
             'created_at'  => now(),
             'updated_at'  => now()
         ]);
