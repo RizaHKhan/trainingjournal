@@ -22,8 +22,10 @@ class ProgramController extends Controller
      */
     public function index(Request $request): Response
     {
-        $user = $request->user();
-        $programs = $user->programs;
+        $user     = $request->user();
+        $programs = Program::with('exercises')
+            ->whereRelation('user', 'id', $user->id)
+            ->get();
 
         return Inertia::render('Private/Program/Programs', [
             'programs' => $programs
