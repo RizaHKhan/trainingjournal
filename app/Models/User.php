@@ -21,7 +21,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $appends = ['programs', 'measurement', 'roles'];
+    protected $appends = [
+        'programs',
+        'measurement',
+        'roles'
+    ];
 
     /**
      * The attributes that are mass assignable.
@@ -43,7 +47,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'measurement_system'
     ];
 
     /**
