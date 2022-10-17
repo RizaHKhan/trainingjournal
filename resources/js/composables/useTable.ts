@@ -34,6 +34,16 @@ export default function useTable() {
                 field: (row: { name: string; description: string }) => row.name,
             },
             {
+                name: "sets",
+                label: "Sets",
+                align: "left",
+                field: (row: {
+                    name: string;
+                    description: string;
+                    sets: number;
+                }) => row,
+            },
+            {
                 name: "actions",
                 label: "Actions",
                 align: "left",

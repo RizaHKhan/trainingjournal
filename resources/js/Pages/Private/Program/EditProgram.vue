@@ -40,6 +40,14 @@
                                     </Row>
                                 </Row>
                             </template>
+                            <template #body-cell-sets="{ row }">
+                                <q-td>
+                                    <TextInput
+                                        v-model="row.sets"
+                                        placeholder="Sets for this exercise"
+                                    />
+                                </q-td>
+                            </template>
                             <template #body-cell-actions="{ row }">
                                 <q-td>
                                     <Button
@@ -55,6 +63,8 @@
                     <Button label="Save" @click="update" />
                 </Row>
             </div>
+            <pre>{{ program }}</pre>
+            <pre>{{ extras }}</pre>
         </div>
     </div>
 </template>
@@ -74,6 +84,10 @@ const props = defineProps({
         default: () => {},
     },
     exercises: {
+        type: Array,
+        default: () => [],
+    },
+    extras: {
         type: Array,
         default: () => [],
     },

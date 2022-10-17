@@ -10,6 +10,7 @@ use App\Models\Exercise;
 use App\Models\Program;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response;
 
@@ -70,14 +71,26 @@ class ProgramController extends Controller
      * @param  \App\Models\Program  $program
      * @return \Illuminate\Http\Response
      */
-    public function edit(Program $program): Response
+    public function edit(Program $program, Request $request): Response
     {
-        $target    = Program::with(['exercises'])->where(['id' => $program->id])->first();
+        $user      = $request->user();
         $exercises = Exercise::all();
+        $extras    = DB::table('exercise_program')
+            ->where(['user_id' => $user->id, 'program_id' => $program->id])
+            ->select(['id', 'exercise_id', 'program_id', 'sets'])
+            ->get()->values();
+
+        $targetProgram = $program->load('exercises');
+
+        $targetProgram['exercises'] = $targetProgram['exercises']->map(function ($exercise) use ($extras) {
+            $exercise['sets'] = $extras->firstWhere('exercise_id', $exercise->id)->sets;
+            return $exercise;
+        });
 
         return Inertia::render('Private/Program/EditProgram', [
-            'program'   => $target,
-            'exercises' => $exercises
+            'program'   => $targetProgram,
+            'exercises' => $exercises,
+            'extras'    => $extras
         ]);
     }
 

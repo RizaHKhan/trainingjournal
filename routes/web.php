@@ -33,7 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/settings', [UserController::class, 'update'])->name('update');
 
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs');
-    Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('editProgram');
+    Route::get('/programs/{program}', [ProgramController::class, 'edit'])->name('getProgram');
     Route::put('/programs/{program}', [ProgramController::class, 'update'])->name('updateProgram');
     Route::delete('/programs/{program}', [ProgramController::class, 'destroy'])->name('deleteProgram');
 
