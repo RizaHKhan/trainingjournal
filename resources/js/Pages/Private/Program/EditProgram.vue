@@ -16,7 +16,7 @@
                             cols="exercisesHeader"
                         >
                             <template #top>
-                                <Row column>
+                                <Row>
                                     <p class="text-h6 q-ma-none">Exercises</p>
                                     <Row justify="flex-end">
                                         <Select
@@ -93,7 +93,7 @@ const props = defineProps({
     },
 });
 
-const selectedExercise = ref({ name: "" });
+const selectedExercise = ref({ name: "", sets: 5 });
 const form = useForm({ ...props.program });
 
 const deleteExercise = (id: number) => {
@@ -104,8 +104,8 @@ const deleteExercise = (id: number) => {
 };
 
 const handleAddExercise = () => {
-    form.exercises.push(selectedExercise.value);
-    selectedExercise.value = { name: "" };
+    form.exercises.push({ ...selectedExercise.value, sets: 5 });
+    selectedExercise.value = { name: "", sets: 5 };
 };
 
 const update = () => {
