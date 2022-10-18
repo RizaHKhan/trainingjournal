@@ -22,21 +22,21 @@ class WorkoutSeeder extends Seeder
                 'exercises'  => [
                     [
                         'exercise_id' => 1,
-                        'name'    => 'Bench Press',
+                        'name'        => 'Bench Press',
                         'weight'      => 100,
                         'rpe'         => 4,
                         'comment'     => 'Things went well, but were difficult'
                     ],
                     [
                         'exercise_id' => 3,
-                        'name'    => 'Squat',
+                        'name'        => 'Squat',
                         'weight'      => 200,
                         'rpe'         => 4,
                         'comment'     => ''
                     ],
                     [
                         'exercise_id' => 4,
-                        'name'    => 'Deadlift',
+                        'name'        => 'Deadlift',
                         'weight'      => 300,
                         'rpe'         => 4,
                         'comment'     => 'Difficult, could not get underneath it'
@@ -50,21 +50,21 @@ class WorkoutSeeder extends Seeder
                 'exercises'  => [
                     [
                         'exercise_id' => 2,
-                        'name'    => 'Shoulder Press',
+                        'name'        => 'Shoulder Press',
                         'weight'      => 100,
                         'rpe'         => 4,
                         'comment'     => 'Some other stuff was distracting me'
                     ],
                     [
                         'exercise_id' => 3,
-                        'name'    => 'Squat',
+                        'name'        => 'Squat',
                         'weight'      => 205,
                         'rpe'         => 4,
                         'comment'     => ''
                     ],
                     [
                         'exercise_id' => 4,
-                        'name'    => 'Deadlift',
+                        'name'        => 'Deadlift',
                         'weight'      => 300,
                         'rpe'         => 4,
                         'comment'     => 'It was difficult and I had some pain'
