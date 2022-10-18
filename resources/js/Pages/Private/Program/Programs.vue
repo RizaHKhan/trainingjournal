@@ -27,7 +27,7 @@
                                     class="link icon"
                                     :href="
                                         route('deleteProgram', {
-                                            program: row.id,
+                                            program: row.id
                                         })
                                     "
                                     method="delete"
@@ -37,7 +37,7 @@
                                     class="link icon"
                                     :href="
                                         route('editProgram', {
-                                            program: row.id,
+                                            program: row.id
                                         })
                                     "
                                 >
@@ -53,12 +53,12 @@
 </template>
 
 <script setup lang="ts">
-import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3"
 
 defineProps({
     programs: {
         type: Array,
-        default: () => [],
-    },
-});
+        default: () => []
+    }
+})
 </script>

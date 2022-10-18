@@ -70,45 +70,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { ref } from "vue"
+import { useForm } from "@inertiajs/inertia-vue3"
 
 interface Exercise {
-    id: number;
-    name: string;
+    id: number
+    name: string
 }
 
 const props = defineProps({
     program: {
         type: Object,
-        default: () => {},
+        default: () => {}
     },
     exercises: {
         type: Array,
-        default: () => [],
+        default: () => []
     },
     extras: {
         type: Array,
-        default: () => [],
-    },
-});
+        default: () => []
+    }
+})
 
-const selectedExercise = ref({ name: "", sets: 5 });
-const form = useForm({ ...props.program });
+const selectedExercise = ref({ name: "", sets: 5 })
+const form = useForm({ ...props.program })
 
 const deleteExercise = (id: number) => {
-    console.log(form.exercises);
+    console.log(form.exercises)
     form.exercises = form.exercises.filter(
         (exercise: Exercise) => exercise.id !== id
-    );
-};
+    )
+}
 
 const handleAddExercise = () => {
-    form.exercises.push({ ...selectedExercise.value, sets: 5 });
-    selectedExercise.value = { name: "", sets: 5 };
-};
+    form.exercises.push({ ...selectedExercise.value, sets: 5 })
+    selectedExercise.value = { name: "", sets: 5 }
+}
 
 const update = () => {
-    form.put(`/programs/${props.program.id}`);
-};
+    form.put(`/programs/${props.program.id}`)
+}
 </script>

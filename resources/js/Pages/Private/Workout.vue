@@ -26,39 +26,39 @@
 </template>
 
 <script setup lang="ts">
-import { useForm } from "@inertiajs/inertia-vue3";
-import { date } from "quasar";
+import { useForm } from "@inertiajs/inertia-vue3"
+import { date } from "quasar"
 
 const props = defineProps({
     exercises: {
         type: Array,
-        default: () => [],
+        default: () => []
     },
     date: {
         type: String,
-        default: "",
+        default: ""
     },
     workoutId: {
         type: Number,
-        default: -1,
+        default: -1
     },
     programId: {
         type: Number,
-        default: -1,
-    },
-});
+        default: -1
+    }
+})
 
 const form = useForm({
     date: props.date,
     program_id: props.programId,
-    exercises: [...props.exercises],
-});
+    exercises: [...props.exercises]
+})
 
 const saveWorkoutData = () => {
     if (props.workoutId > 0) {
-        form.put(`/workout/${props.workoutId}`, { exercises: form.exercises });
+        form.put(`/workout/${props.workoutId}`, { exercises: form.exercises })
     } else {
-        form.post("/workout");
+        form.post("/workout")
     }
-};
+}
 </script>

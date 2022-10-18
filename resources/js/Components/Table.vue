@@ -12,14 +12,14 @@
 </template>
 
 <script setup>
-import useTable from "@/composables/useTable";
+import useTable from "@/composables/useTable"
 
 const props = defineProps({
     cols: {
         type: String,
-        default: "",
-    },
-});
+        default: ""
+    }
+})
 
-const { columns } = useTable();
+const { columns } = useTable()
 </script>

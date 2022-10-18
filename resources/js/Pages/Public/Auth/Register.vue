@@ -49,19 +49,19 @@
 </template>
 
 <script setup lang="ts">
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3"
 
 const form = useForm({
     name: "",
     email: "",
     password: "",
     password_confirmation: "",
-    terms: false,
-});
+    terms: false
+})
 
 const submit = () => {
     form.post(route("register"), {
-        onFinish: () => form.reset("password", "password_confirmation"),
-    });
-};
+        onFinish: () => form.reset("password", "password_confirmation")
+    })
+}
 </script>

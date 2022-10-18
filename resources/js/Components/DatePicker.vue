@@ -14,21 +14,21 @@
     </TextInput>
 </template>
 
-<script setup>
-import Date from "./Date.vue";
-import { computed } from "vue";
+<script setup lang="ts">
+import Date from "./Date.vue"
+import { computed } from "vue"
 
 const props = defineProps({
     modelValue: {
         type: String,
-        default: "",
-    },
-});
+        default: ""
+    }
+})
 
-const emit = defineEmits(["update:modelValue"]);
+const emit = defineEmits(["update:modelValue"])
 
 const date = computed({
     get: () => props.modelValue,
-    set: (val) => emit("update:modelValue", val),
-});
+    set: (val) => emit("update:modelValue", val)
+})
 </script>

@@ -62,27 +62,27 @@
 </template>
 
 <script setup lang="ts">
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import InputError from "@/Components/InputError.vue";
-import InputLabel from "@/Components/InputLabel.vue";
-import TextInput from "@/Components/TextInput.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+import InputError from "@/Components/InputError.vue"
+import InputLabel from "@/Components/InputLabel.vue"
+import TextInput from "@/Components/TextInput.vue"
+import { useForm } from "@inertiajs/inertia-vue3"
 
 const props = defineProps({
     email: String,
-    token: String,
-});
+    token: String
+})
 
 const form = useForm({
     token: props.token,
     email: props.email,
     password: "",
-    password_confirmation: "",
-});
+    password_confirmation: ""
+})
 
 const submit = () => {
     form.post(route("password.update"), {
-        onFinish: () => form.reset("password", "password_confirmation"),
-    });
-};
+        onFinish: () => form.reset("password", "password_confirmation")
+    })
+}
 </script>

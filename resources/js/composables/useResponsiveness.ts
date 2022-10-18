@@ -1,35 +1,35 @@
-import { computed } from "vue";
-import { useQuasar } from "quasar";
+import { computed } from "vue"
+import { useQuasar } from "quasar"
 
 export default function useResponsiveness() {
-    const $q = useQuasar();
+    const $q = useQuasar()
 
-    const breakpoint = computed(() => $q.screen.name);
-    const denseTable = computed(() => $q.screen.lt.md);
+    const breakpoint = computed(() => $q.screen.name)
+    const denseTable = computed(() => $q.screen.lt.md)
 
     const direction = computed(() => {
-        let direction = "";
+        let direction = ""
         switch (breakpoint.value) {
             case "xs":
-                direction = "row";
-                break;
+                direction = "row"
+                break
             case "sm":
-                direction = "row";
-                break;
+                direction = "row"
+                break
             case "md":
-                direction = "column";
-                break;
+                direction = "column"
+                break
             default:
-                direction = "column";
-                break;
+                direction = "column"
+                break
         }
 
-        return direction;
-    });
+        return direction
+    })
 
     return {
         breakpoint,
         direction,
-        denseTable,
-    };
+        denseTable
+    }
 }

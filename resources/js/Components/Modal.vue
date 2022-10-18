@@ -19,59 +19,59 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, computed } from "vue"
 
-const modal = ref(false);
+const modal = ref(false)
 const props = defineProps({
     title: {
         type: String,
-        default: "",
+        default: ""
     },
     size: {
         type: String,
         default: "medium",
         validator(val) {
-            return ["small", "medium", "large"].includes(val);
-        },
+            return ["small", "medium", "large"].includes(val)
+        }
     },
     persistent: {
         type: Boolean,
-        default: false,
-    },
-});
+        default: false
+    }
+})
 
-const emit = defineEmits(["opened", "closed"]);
+const emit = defineEmits(["opened", "closed"])
 
 const size = computed(() => {
-    let style = {};
+    let style = {}
     switch (props.size) {
         case "small":
-            style = { width: "300px" };
-            break;
+            style = { width: "300px" }
+            break
         case "medium":
-            style = { width: "700px", "max-width": "80vw" };
-            break;
+            style = { width: "700px", "max-width": "80vw" }
+            break
         case "large":
-            style = { "min-width": "95vw" };
-            break;
+            style = { "min-width": "95vw" }
+            break
     }
 
-    return style;
-});
+    return style
+})
 
 const closeModal = () => {
-    emit("closed");
-    modal.value = false;
-};
+    emit("closed")
+    modal.value = false
+}
 
 const openModal = () => {
-    emit("opened");
-    modal.value = true;
-};
+    emit("opened")
+    modal.value = true
+}
 </script>
 
 <script>
 export default {
-    inheritAttrs: false,
-};
+    inheritAttrs: false
+}
 </script>

@@ -15,7 +15,7 @@
 defineProps({
     exercises: {
         type: Array,
-        default: () => [],
-    },
-});
+        default: () => []
+    }
+})
 </script>

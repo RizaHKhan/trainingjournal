@@ -38,21 +38,21 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import GuestLayout from "@/Layouts/GuestLayout.vue";
-import { useForm } from "@inertiajs/inertia-vue3";
+import { computed } from "vue"
+import GuestLayout from "@/Layouts/GuestLayout.vue"
+import { useForm } from "@inertiajs/inertia-vue3"
 
 const props = defineProps({
-    status: String,
-});
+    status: String
+})
 
-const form = useForm();
+const form = useForm()
 
 const submit = () => {
-    form.post(route("verification.send"));
-};
+    form.post(route("verification.send"))
+}
 
 const verificationLinkSent = computed(
     () => props.status === "verification-link-sent"
-);
+)
 </script>

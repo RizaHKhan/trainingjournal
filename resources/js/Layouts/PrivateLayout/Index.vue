@@ -103,35 +103,35 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { date } from "quasar";
-import { Link } from "@inertiajs/inertia-vue3";
-import { useForm } from "@inertiajs/inertia-vue3";
-import Logo from "@/Components/Logo.vue";
+import { ref } from "vue"
+import { date } from "quasar"
+import { Link } from "@inertiajs/inertia-vue3"
+import { useForm } from "@inertiajs/inertia-vue3"
+import Logo from "@/Components/Logo.vue"
 
 const workout = useForm({
     date: date.formatDate(new Date(), "YYYY/MM/DD"),
-    program: "",
-});
+    program: ""
+})
 
-const leftDrawerOpen = ref(true);
+const leftDrawerOpen = ref(true)
 
 defineProps({
     header: {
         type: String,
-        default: "",
+        default: ""
     },
     auth: {
         type: Object,
-        default: () => {},
-    },
-});
+        default: () => {}
+    }
+})
 
 const submit = (callback: () => void) => {
     workout.get(`/workout/${workout.program}`, {
         onFinish: () => {
-            callback();
-        },
-    });
-};
+            callback()
+        }
+    })
+}
 </script>

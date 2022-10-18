@@ -18,11 +18,11 @@
 <script setup lang="ts">
 defineProps({
     workouts: {
-        type: Array,
+        type: Array
     },
     auth: {
         type: Object,
-        default: () => {},
-    },
-});
+        default: () => {}
+    }
+})
 </script>

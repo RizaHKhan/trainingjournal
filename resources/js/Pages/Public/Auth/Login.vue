@@ -52,22 +52,22 @@
 </template>
 
 <script setup lang="ts">
-import { Link, useForm } from "@inertiajs/inertia-vue3";
+import { Link, useForm } from "@inertiajs/inertia-vue3"
 
 defineProps({
     canResetPassword: Boolean,
-    status: String,
-});
+    status: String
+})
 
 const form = useForm({
     email: "",
     password: "",
-    remember: false,
-});
+    remember: false
+})
 
 const submit = () => {
     form.post(route("login"), {
-        onFinish: () => form.reset("password"),
-    });
-};
+        onFinish: () => form.reset("password")
+    })
+}
 </script>

@@ -12,7 +12,7 @@
                 v-model="form.measurement_system"
                 :options="[
                     { label: 'Imperial', value: 'imperial' },
-                    { label: 'Metric', value: 'metric' },
+                    { label: 'Metric', value: 'metric' }
                 ]"
             />
             <Button type="submit" label="Save" />
@@ -21,18 +21,18 @@
 </template>
 
 <script setup>
-import { useForm } from "@inertiajs/inertia-vue3";
+import { useForm } from "@inertiajs/inertia-vue3"
 
 const props = defineProps({
     auth: {
         type: Object,
-        default: () => {},
-    },
-});
+        default: () => {}
+    }
+})
 
-const form = useForm({ ...props.auth.user });
+const form = useForm({ ...props.auth.user })
 
 const submit = () => {
-    form.put("/settings");
-};
+    form.put("/settings")
+}
 </script>

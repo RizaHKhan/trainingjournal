@@ -1,28 +1,26 @@
-@import './quasar-variables.scss';
+@import "./quasar-variables.scss";
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .link {
-  color: $secondary;
-  text-decoration: none;
+    color: $secondary;
+    text-decoration: none;
 }
 
 .link.icon {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .btn {
-  padding: 1rem;
-  background: $secondary;
-  color: white;
-  border-radius: 5px;
+    padding: 1rem;
+    background: $secondary;
+    color: white;
+    border-radius: 5px;
 }
 
 .logo {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
-
-

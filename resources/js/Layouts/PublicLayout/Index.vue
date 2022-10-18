@@ -34,11 +34,11 @@
 </template>
 
 <script setup lang="ts">
-import Logo from "@/Components/Logo.vue";
-import { Link } from "@inertiajs/inertia-vue3";
+import Logo from "@/Components/Logo.vue"
+import { Link } from "@inertiajs/inertia-vue3"
 
 defineProps({
     canLogin: Boolean,
-    canRegister: Boolean,
-});
+    canRegister: Boolean
+})
 </script>

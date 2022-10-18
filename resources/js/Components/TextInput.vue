@@ -7,25 +7,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed } from "vue"
 
-const input = ref(null);
+const input = ref(null)
 
 const classes = computed(() => {
-    const classes = [];
+    const classes = []
 
-    const beforeField = input?.value?.$el.querySelector(".q-field__before");
+    const beforeField = input?.value?.$el.querySelector(".q-field__before")
     if (beforeField) {
-        classes.push("with-before");
+        classes.push("with-before")
     }
 
-    const afterField = input?.value?.$el.querySelector(".q-field__after");
+    const afterField = input?.value?.$el.querySelector(".q-field__after")
     if (afterField) {
-        classes.push("with-after");
+        classes.push("with-after")
     }
 
-    return classes;
-});
+    return classes
+})
 </script>
 
 <style lang="scss">
