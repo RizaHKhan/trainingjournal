@@ -46,3 +46,9 @@ container_commands:
     command: "php artisan migrate"
 
 ```
+
+Command to convert folder to zip is:
+
+```
+zip ..Downloads/laravel-v2-rds.zip -r * .[^.]* -x "vendor/*"
+```
