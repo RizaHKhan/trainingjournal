@@ -5,3 +5,5 @@
         </template>
     </q-icon>
 </template>
+
+<script setup lang="ts"></script>

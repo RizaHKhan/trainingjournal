@@ -18,7 +18,7 @@
     </q-dialog>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from "vue"
 
 const modal = ref(false)
@@ -70,7 +70,7 @@ const openModal = () => {
 }
 </script>
 
-<script>
+<script lang="ts">
 export default {
     inheritAttrs: false
 }

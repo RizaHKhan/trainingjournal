@@ -1,44 +1,37 @@
 <template>
-    <GuestLayout>
-        <Head title="Confirm Password" />
+    <Head title="Confirm Password" />
 
-        <div class="mb-4 text-sm text-gray-600">
-            This is a secure area of the application. Please confirm your
-            password before continuing.
+    <div class="mb-4 text-sm text-gray-600">
+        This is a secure area of the application. Please confirm your password
+        before continuing.
+    </div>
+
+    <form @submit.prevent="submit">
+        <div>
+            <TextInput
+                id="password"
+                type="password"
+                class="mt-1 block w-full"
+                v-model="form.password"
+                required
+                autocomplete="current-password"
+                autofocus
+            />
         </div>
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="password" value="Password" />
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="current-password"
-                    autofocus
-                />
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="flex justify-end mt-4">
-                <Button
-                    class="ml-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Confirm
-                </Button>
-            </div>
-        </form>
-    </GuestLayout>
+        <div class="flex justify-end mt-4">
+            <Button
+                class="ml-4"
+                :class="{ 'opacity-25': form.processing }"
+                :disabled="form.processing"
+            >
+                Confirm
+            </Button>
+        </div>
+    </form>
 </template>
 
 <script setup lang="ts">
-import GuestLayout from "@/Layouts/GuestLayout.vue"
-import InputError from "@/Components/InputError.vue"
-import InputLabel from "@/Components/InputLabel.vue"
 import TextInput from "@/Components/TextInput.vue"
 import { useForm } from "@inertiajs/inertia-vue3"
 
