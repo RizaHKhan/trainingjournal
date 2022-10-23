@@ -1,0 +1,148 @@
+ApplicationName: trainingjournal
+DateUpdated: 2022-10-23 20:55:47+00:00
+EnvironmentName: development
+PlatformArn: arn:aws:elasticbeanstalk:us-east-1::platform/PHP 8.1 running on 64bit
+  Amazon Linux 2/3.5.0
+settings:
+  AWSEBAutoScalingScaleDownPolicy.aws:autoscaling:trigger:
+    LowerBreachScaleIncrement: '-1'
+  AWSEBAutoScalingScaleUpPolicy.aws:autoscaling:trigger:
+    UpperBreachScaleIncrement: '1'
+  AWSEBCloudwatchAlarmHigh.aws:autoscaling:trigger:
+    UpperThreshold: '6000000'
+  AWSEBCloudwatchAlarmLow.aws:autoscaling:trigger:
+    BreachDuration: '5'
+    EvaluationPeriods: '1'
+    LowerThreshold: '2000000'
+    MeasureName: NetworkOut
+    Period: '5'
+    Statistic: Average
+    Unit: Bytes
+  AWSEBLoadBalancerSecurityGroup.aws:ec2:vpc:
+    VPCId: null
+  aws:autoscaling:asg:
+    Availability Zones: Any
+    Cooldown: '360'
+    Custom Availability Zones: ''
+    EnableCapacityRebalancing: 'false'
+    MaxSize: '4'
+    MinSize: '1'
+  aws:autoscaling:launchconfiguration:
+    BlockDeviceMappings: null
+    DisableIMDSv1: 'false'
+    EC2KeyName: aws-eb
+    IamInstanceProfile: aws-elasticbeanstalk-ec2-role
+    ImageId: ami-0f36f6feea89000c3
+    InstanceType: t2.micro
+    MonitoringInterval: 5 minute
+    RootVolumeIOPS: null
+    RootVolumeSize: null
+    RootVolumeThroughput: null
+    RootVolumeType: null
+    SSHSourceRestriction: tcp,22,22,0.0.0.0/0
+    SecurityGroups: awseb-e-pqc2rdff7t-stack-AWSEBSecurityGroup-1H4P73PUKD6C6
+  aws:autoscaling:updatepolicy:rollingupdate:
+    MaxBatchSize: '1'
+    MinInstancesInService: '1'
+    PauseTime: null
+    RollingUpdateEnabled: 'true'
+    RollingUpdateType: Health
+    Timeout: PT30M
+  aws:ec2:instances:
+    EnableSpot: 'false'
+    InstanceTypes: t2.micro, t2.small
+    SpotFleetOnDemandAboveBasePercentage: '70'
+    SpotFleetOnDemandBase: '0'
+    SpotMaxPrice: null
+    SupportedArchitectures: x86_64
+  aws:ec2:vpc:
+    AssociatePublicIpAddress: null
+    ELBScheme: public
+    ELBSubnets: null
+    Subnets: null
+  aws:elasticbeanstalk:application:
+    Application Healthcheck URL: ''
+  aws:elasticbeanstalk:cloudwatch:logs:
+    DeleteOnTerminate: 'false'
+    RetentionInDays: '7'
+    StreamLogs: 'false'
+  aws:elasticbeanstalk:cloudwatch:logs:health:
+    DeleteOnTerminate: 'false'
+    HealthStreamingEnabled: 'false'
+    RetentionInDays: '7'
+  aws:elasticbeanstalk:command:
+    BatchSize: '30'
+    BatchSizeType: Percentage
+    DeploymentPolicy: Rolling
+    IgnoreHealthCheck: 'false'
+    Timeout: '600'
+  aws:elasticbeanstalk:container:php:phpini:
+    allow_url_fopen: 'On'
+    composer_options: null
+    display_errors: 'Off'
+    document_root: /public
+    max_execution_time: '60'
+    memory_limit: 256M
+    zlib.output_compression: 'Off'
+  aws:elasticbeanstalk:control:
+    DefaultSSHPort: '22'
+    LaunchTimeout: '0'
+    LaunchType: Migration
+    RollbackLaunchOnFailure: 'false'
+  aws:elasticbeanstalk:environment:
+    EnvironmentType: LoadBalanced
+    ExternalExtensionsS3Bucket: null
+    ExternalExtensionsS3Key: null
+    LoadBalancerType: classic
+    ServiceRole: aws-elasticbeanstalk-service-role
+  aws:elasticbeanstalk:environment:proxy:
+    ProxyServer: nginx
+  aws:elasticbeanstalk:healthreporting:system:
+    ConfigDocument: '{"Version":1,"CloudWatchMetrics":{"Instance":{"CPUIrq":null,"LoadAverage5min":null,"ApplicationRequests5xx":null,"ApplicationRequests4xx":null,"CPUUser":null,"LoadAverage1min":null,"ApplicationLatencyP50":null,"CPUIdle":null,"InstanceHealth":null,"ApplicationLatencyP95":null,"ApplicationLatencyP85":null,"RootFilesystemUtil":null,"ApplicationLatencyP90":null,"CPUSystem":null,"ApplicationLatencyP75":null,"CPUSoftirq":null,"ApplicationLatencyP10":null,"ApplicationLatencyP99":null,"ApplicationRequestsTotal":null,"ApplicationLatencyP99.9":null,"ApplicationRequests3xx":null,"ApplicationRequests2xx":null,"CPUIowait":null,"CPUNice":null},"Environment":{"InstancesSevere":null,"InstancesDegraded":null,"ApplicationRequests5xx":null,"ApplicationRequests4xx":null,"ApplicationLatencyP50":null,"ApplicationLatencyP95":null,"ApplicationLatencyP85":null,"InstancesUnknown":null,"ApplicationLatencyP90":null,"InstancesInfo":null,"InstancesPending":null,"ApplicationLatencyP75":null,"ApplicationLatencyP10":null,"ApplicationLatencyP99":null,"ApplicationRequestsTotal":null,"InstancesNoData":null,"ApplicationLatencyP99.9":null,"ApplicationRequests3xx":null,"ApplicationRequests2xx":null,"InstancesOk":null,"InstancesWarning":null}}}'
+    EnhancedHealthAuthEnabled: 'true'
+    HealthCheckSuccessThreshold: Ok
+    SystemType: enhanced
+  aws:elasticbeanstalk:hostmanager:
+    LogPublicationControl: 'false'
+  aws:elasticbeanstalk:managedactions:
+    ManagedActionsEnabled: 'false'
+    PreferredStartTime: null
+    ServiceRoleForManagedUpdates: aws-elasticbeanstalk-service-role
+  aws:elasticbeanstalk:managedactions:platformupdate:
+    InstanceRefreshEnabled: 'false'
+    UpdateLevel: null
+  aws:elasticbeanstalk:monitoring:
+    Automatically Terminate Unhealthy Instances: 'true'
+  aws:elasticbeanstalk:sns:topics:
+    Notification Endpoint: null
+    Notification Protocol: email
+    Notification Topic ARN: null
+    Notification Topic Name: null
+  aws:elasticbeanstalk:xray:
+    XRayEnabled: 'false'
+  aws:elb:healthcheck:
+    HealthyThreshold: '3'
+    Interval: '10'
+    Target: TCP:80
+    Timeout: '5'
+    UnhealthyThreshold: '5'
+  aws:elb:listener:80:
+    InstancePort: '80'
+    InstanceProtocol: HTTP
+    ListenerEnabled: 'true'
+    ListenerProtocol: HTTP
+    SSLCertificateId: null
+  aws:elb:loadbalancer:
+    CrossZone: 'true'
+    LoadBalancerHTTPPort: '80'
+    LoadBalancerHTTPSPort: 'OFF'
+    LoadBalancerPortProtocol: HTTP
+    LoadBalancerSSLPortProtocol: HTTPS
+    SSLCertificateId: null
+    SecurityGroups: sg-0001d6fa0e64ef05f
+  aws:elb:policies:
+    ConnectionDrainingEnabled: 'true'
+    ConnectionDrainingTimeout: '20'
+    ConnectionSettingIdleTimeout: '60'
+  aws:rds:dbinstance:
+    HasCoupledDatabase: 'false'
