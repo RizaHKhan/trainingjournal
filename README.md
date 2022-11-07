@@ -24,7 +24,7 @@ php artisan migrate:fresh --seed
 
 | Name     | Description                 |
 | -------- | --------------------------- |
-| User     | asdf                        |
+| User     | User                        |
 | Program  | Users programs              |
 | Exercise | Generic Exercises           |
 | Workout  | Uses can set their workouts |

@@ -12,8 +12,8 @@ const Template = (args) => ({
         return { args }
     },
     template: `<AuthLayout v-bind="args">
-              some stuff goes here
-            </AuthLayout>`
+                some stuff goes here
+              </AuthLayout>`
 })
 
 export const Primary = Template.bind({})

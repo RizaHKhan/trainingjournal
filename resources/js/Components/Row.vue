@@ -4,7 +4,7 @@
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, useSlots } from "vue"
 import useResponsiveness from "@/composables/useResponsiveness"
 const { breakpoint } = useResponsiveness()
@@ -37,7 +37,7 @@ const props = defineProps({
     justify: {
         type: String,
         default: "",
-        validator: (val) =>
+        validator: (val: string) =>
             [
                 "flex-start",
                 "flex-end",
@@ -54,8 +54,21 @@ const props = defineProps({
     }
 })
 
+interface Style {
+    display: string
+    "grid-auto-flow": string
+    "grid-template-columns": string
+    "grid-template-rows": string
+    width: string
+    "flex-direction": string
+    "flex-row": string
+    "flex-flow": string
+    "grid-gap": string
+    "justify-content": string
+}
+
 const styles = computed(() => {
-    const styles = {}
+    const styles = <Style>{}
 
     if (props.grid) {
         styles["display"] = "grid"
@@ -68,7 +81,7 @@ const styles = computed(() => {
             if (props.columns) {
                 styles["grid-template-columns"] = props.columns
             } else {
-                const slots = useSlots()
+                const slots = useSlots() as any
                 const numOfElements = slots.default().length
 
                 styles[

@@ -11,10 +11,10 @@
     </q-table>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import useTable from "@/composables/useTable"
 
-const props = defineProps({
+defineProps({
     cols: {
         type: String,
         default: ""
